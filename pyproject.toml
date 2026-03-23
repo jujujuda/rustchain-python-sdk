@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rustchain"
+version = "0.1.0"
+description = "Python SDK for RustChain blockchain"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.7"
+authors = [
+    {name = "RustChain Bounty Hunter", email = "bounty@rustchain.org"},
+]
+keywords = ["rustchain", "blockchain", "cryptocurrency", "sdk"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Office/Business :: Financial",
+]
+dependencies = [
+    "httpx>=0.22.0",
+]
+
+[project.optional-dependencies]
+async = ["httpx[http2]>=0.22.0"]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "pytest-cov>=4.0",
+]
+
+[project.scripts]
+rustchain = "rustchain.cli:main"
+
+[project.urls]
+Homepage = "https://rustchain.org"
+Repository = "https://github.com/Scottcjn/rustchain-python-sdk"
+Documentation = "https://github.com/Scottcjn/rustchain-python-sdk#readme"
+Bounty = "https://github.com/Scottcjn/rustchain-bounties/issues/2297"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+
+[tool.coverage.run]
+source = ["rustchain"]
+branch = true
